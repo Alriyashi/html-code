@@ -1,0 +1,37 @@
+<!-- new_page.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Select Car</title>
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <!-- Add any additional styles or scripts needed for the new page -->
+</head>
+<body>
+    <div class="container">
+        <h1>Select Car</h1>
+        <form id="carSelectionForm">
+            <div class="mb-3">
+                <label for="carModel" class="form-label">Car Model:</label>
+                <select class="form-select" id="carModel" name="carModel">
+                    <!-- Add options for car models -->
+                    <option value="model1">Model 1</option>
+                    <option value="model2">Model 2</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="carYear" class="form-label">Car Year:</label>
+                <input type="text" class="form-control" id="carYear" name="carYear" placeholder="Enter car year">
+            </div>
+            <div class="mb-3">
+                <label for="state" class="form-label">State:</label>
+                <input type="text" class="form-control" id="state" name="state" placeholder="Enter state">
+            </div>
+            <button type="button" class="btn btn-primary" onclick="submitCarSelection()">Submit</button>
+        </form>
+    </div>
+    <!-- Include Bootstrap and other necessary scripts if needed -->
+</body>
+</html>
