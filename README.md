@@ -52,15 +52,18 @@
             </form>
         </div>
     </div>
-      <script>
+     <script>
         function validateLogin() {
             var username = document.getElementById("username").value;
             var password = document.getElementById("password").value;
 
             // Check the login credentials
-            if ((username === "Riley" && password === "password") || (username === "Admin" && password === "1234")) {
-                // If login is successful, navigate to the new page
-                window.location.href = "new_page.html";
+            if (username === "Riley" && password === "password") {
+                // If Riley logs in, navigate to Riley's page
+                window.location.href = "riley_page.html";
+            } else if (username === "Admin" && password === "1234") {
+                // If Admin logs in, navigate to Admin's page
+                window.location.href = "admin_page.html";
             } else {
                 // Display an error message (you can customize this part)
                 alert("Invalid username or password. Please try again.");
