@@ -1,37 +1,175 @@
-<!-- new_page.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Select Car</title>
-    <link rel="stylesheet" href="css/stylesheet.css">
-    <!-- Add any additional styles or scripts needed for the new page -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Selection Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://t4.ftcdn.net/jpg/01/46/89/33/360_F_146893339_W7gl4KxGZkDlaac8f64FpFLRSeyWmzt9.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        header, footer {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #555;
+            padding: 10px;
+            width: 100%;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .container {
+            max-width: 600px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #000;
+        }
+
+        select {
+            width: calc(33.33% - 6px);
+            padding: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            display: inline-block;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            margin-top: 16px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Select Car</h1>
-        <form id="carSelectionForm">
-            <div class="mb-3">
-                <label for="carModel" class="form-label">Car Model:</label>
-                <select class="form-select" id="carModel" name="carModel">
-                    <!-- Add options for car models -->
-                    <option value="model1">Model 1</option>
-                    <option value="model2">Model 2</option>
-                    <!-- Add more options as needed -->
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="carYear" class="form-label">Car Year:</label>
-                <input type="text" class="form-control" id="carYear" name="carYear" placeholder="Enter car year">
-            </div>
-            <div class="mb-3">
-                <label for="state" class="form-label">State:</label>
-                <input type="text" class="form-control" id="state" name="state" placeholder="Enter state">
-            </div>
-            <button type="button" class="btn btn-primary" onclick="submitCarSelection()">Submit</button>
-        </form>
-    </div>
-    <!-- Include Bootstrap and other necessary scripts if needed -->
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Products</a>
+    <a href="#">Services</a>
+    <a href="#">Contact</a>
+</nav>
+
+<header>
+    <img src="https://s0.hfdstatic.com/sites/the_hartford/img/logo.svg" alt="The Hartford" style="height: 50px; width: auto;">
+</header>
+
+<div class="container">
+    <h2 style="color: black;">QUICK SEARCH</h2>
+    <form>
+        <label for="carMake">Select Car Make:</label>
+        <select id="carMake" name="carMake" onchange="populateCarModels()">
+            <option value="toyota">Toyota</option>
+            <option value="honda">Honda</option>
+            <option value="ford">Ford</option>
+            <!-- Add more car makes here -->
+        </select>
+
+        <label for="carModel">Select Car Model:</label>
+        <select id="carModel" name="carModel"></select>
+
+        <label for="state">Select State:</label>
+        <select id="state" name="state">
+            <option value="ny">New York</option>
+            <option value="ca">California</option>
+            <option value="tx">Texas</option>
+            <!-- Add more states here -->
+        </select>
+
+        <button type="button" onclick="submitForm()">Search</button>
+    </form>
+</div>
+
+<footer>
+    <nav>
+        <a href="#">Contact Us</a>
+        <a href="#">About Us</a>
+        <a href="#">Privacy Policy</a>
+    </nav>
+    <img src="https://s0.hfdstatic.com/sites/the_hartford/img/logo.svg" alt="The Hartford" style="height: 30px; width: auto;">
+    <p>&copy; 2023 Car Selection</p>
+</footer>
+
+<script>
+    function populateCarModels() {
+        var carMake = document.getElementById("carMake");
+        var carModel = document.getElementById("carModel");
+
+        carModel.innerHTML = "";
+
+        switch (carMake.value) {
+            case "toyota":
+                addOption(carModel, "camry", "Camry");
+                addOption(carModel, "corolla", "Corolla");
+                addOption(carModel, "rav4", "RAV4");
+                break;
+            case "honda":
+                addOption(carModel, "accord", "Accord");
+                addOption(carModel, "civic", "Civic");
+                addOption(carModel, "crv", "CR-V");
+                break;
+            case "ford":
+                addOption(carModel, "mustang", "Mustang");
+                addOption(carModel, "f150", "F-150");
+                addOption(carModel, "escape", "Escape");
+                break;
+            // Add cases for more car makes
+        }
+    }
+
+    function addOption(selectElement, value, text) {
+        var option = document.createElement("option");
+        option.value = value;
+        option.text = text;
+        selectElement.add(option);
+    }
+
+    function submitForm() {
+        var carMake = document.getElementById("carMake").value;
+        var carModel = document.getElementById("carModel").value;
+        var state = document.getElementById("state").value;
+
+        alert("Car Make: " + carMake + "\nCar Model: " + carModel + "\nState: " + state);
+    }
+</script>
+
 </body>
 </html>
